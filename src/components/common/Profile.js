@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import api, { makeRequest } from '../../api/api';
+import { makeRequest } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Container, Typography, Box, Alert } from '@mui/material';
 
@@ -35,6 +35,7 @@ const Profile = () => {
     };
 
     fetchProfile();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);  // Only run on mount (empty dependency array)
 
   // Update user details

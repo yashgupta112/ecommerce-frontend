@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api, { makeRequest } from '../../api/api';
 import { Button, Typography, Container, Grid, Card, CardContent, CardActions } from '@mui/material';
-import { Link, Navigate } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 // import { useCart } from '../../contexts/CartContext';
 
 const Cart = () => {
@@ -62,7 +62,6 @@ const Cart = () => {
         >
           Place Order
         </Button>
-
     </Container>
   );
 };

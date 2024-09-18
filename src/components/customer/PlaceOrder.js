@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import api, { makeRequest } from '../../api/api';
+import { makeRequest } from '../../api/api';
 import { Button, Container, Typography, TextField, Box, Alert } from '@mui/material';
 import { useUser } from '../../contexts/UserContext';
 import { Navigate } from 'react-router-dom';

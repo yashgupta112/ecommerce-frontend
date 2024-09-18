@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
 
 const RoleProtectedRoute = ({ allowedRoles, children }) => {
-  const { user, logout } = useUser(); // Get the current user from context
+  const { user } = useUser(); // Get the current user from context
 
   // console.log("user: ", user);
   // If user is not logged in, redirect to the login page
