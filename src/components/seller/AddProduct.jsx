@@ -1,8 +1,9 @@
 // src/components/common/AddProduct.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import { TextField, Button, Container, Typography } from '@mui/material';
+import { TextField, Button, Container, Typography, Select, MenuItem, FormControl, Box } from '@mui/material';
 import { makeRequest } from '../../api/api';
+import BackgroundContainer from '../parts/BackgroundContainer';
 
 const AddProduct = () => {
     const [product, setProduct] = useState({
@@ -40,8 +41,9 @@ const AddProduct = () => {
     };
 
     return (
+        <BackgroundContainer>
         <Container>
-            <Typography variant="h4">Add Product</Typography>
+            <Typography variant="h4" textAlign={"center"}>Add Product</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField
                     label="Product Name"
@@ -102,9 +104,12 @@ const AddProduct = () => {
                     required
                 /> */}
                 {error && <Typography color="error">{error}</Typography>}
-                <Button type="submit" variant="contained" color="primary">Add Product</Button>
+                <Box textAlign='center'>
+                    <Button type="submit" variant="contained" color="primary" sx={{mt: 1}}>Add Product</Button>
+                </Box>
             </form>
         </Container>
+        </BackgroundContainer>
     );
 };
 

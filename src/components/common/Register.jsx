@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { TextField, Button, Grid, Typography, Container, MenuItem, Alert } from '@mui/material';
+import { TextField, Button, Grid, Typography, Container, MenuItem, Alert, Box } from '@mui/material';
 import api from '../../api/api';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import BackgroundContainer from '../parts/BackgroundContainer';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -16,7 +17,7 @@ const Register = () => {
     setError('');
 
     try {
-      await api.post('/users/register', { username, password, email, role });
+      await api.post('/auth/register', { username, password, email, role });
       navigate('/profile'); // Redirect after successful registration
     } catch (err) {
       setError('Registration failed. Please try again.');
@@ -24,6 +25,7 @@ const Register = () => {
   };
 
   return (
+    <BackgroundContainer>
     <Container maxWidth="sm">
       <Grid container spacing={2} direction="column" alignItems="center">
         <Grid item>
@@ -91,8 +93,18 @@ const Register = () => {
             </Grid>
           </form>
         </Grid>
+        <Typography variant="subtitle1" sx={{textAlign: 'center', mt: 3}}>
+          Already have an account?
+        </Typography>
+        <Box textAlign='center'>
+        <Button type="button" variant="contained" color="error" component={Link}  to='/login'>
+            Login now
+          </Button>
+        </Box>
       </Grid>
     </Container>
+    </BackgroundContainer>
+
   );
 };
 

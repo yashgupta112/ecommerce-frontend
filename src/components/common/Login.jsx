@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import api from '../../api/api';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { TextField, Button, Container, Typography, Box, Alert } from '@mui/material';
 import { useUser } from '../../contexts/UserContext';
+import BackgroundContainer from '../parts/BackgroundContainer';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -27,9 +28,10 @@ const Login = () => {
   };
 
   return (
+    <BackgroundContainer>
     <Container maxWidth="xs">
-      <Box sx={{ mt: 4 }}>
-        <Typography variant="h4" gutterBottom>
+      <Box sx={{ }} maxWidth="xs">
+        <Typography variant="h4" gutterBottom sx={{textAlign: 'center'}}>
           Login
         </Typography>
         <form onSubmit={handleLogin}>
@@ -57,8 +59,18 @@ const Login = () => {
             Login
           </Button>
         </form>
+        <Typography variant="subtitle1" sx={{textAlign: 'center', mt: 3}}>
+          Don't have an account?
+        </Typography>
+        <Box textAlign='center'>
+        <Button type="button" variant="contained" color="error" component={Link}  to='/register'>
+            Register now
+          </Button>
+        </Box>
+       
       </Box>
     </Container>
+    </BackgroundContainer>
   );
 };
 

@@ -54,11 +54,15 @@ const Cart = () => {
           </Grid>
         ))}
       </Grid>
+  <Typography color="error" sx={{mt: 3}}>{cartItems.length ? '': 'No prducts in the cart.' }</Typography>
+
       <Button
           variant="contained"
           color="primary"
           component={Link}
           to="/place-order"
+          disabled={!cartItems.length}
+          sx={{mt: 3}}
         >
           Place Order
         </Button>

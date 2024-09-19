@@ -6,7 +6,7 @@ import Register from './components/common/Register';
 import Profile from './components/common/Profile';
 import NotAuthorized from './components/common/NotAuthorized';
 import Logout from './components/common/Logout';
-import Header from './components/common/Header';
+import Header from './components/parts/Header';
 
 // Customer Components
 import ProductsList from './components/customer/ProductsList';
@@ -19,7 +19,7 @@ import AddProduct from './components/seller/AddProduct';
 import ManageProducts from './components/seller/ManageProducts';
 import EditProduct from './components/seller/EditProduct';
 import Home from './components/common/Home';
-import RoleProtectedRoute from './components/common/RoleProtectedRoute';
+import RoleProtectedRoute from './components/parts/RoleProtectedRoute';
 import { ROLE } from './constants';
 import AdminViewUsers from './components/admin/AdminViewUsers';
 import AdminViewOrders from './components/admin/AdminViewOrders';

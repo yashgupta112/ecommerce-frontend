@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect, useRef } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import {jwtDecode} from 'jwt-decode';
 import api, { setAuthToken } from '../api/api';
 
@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
     const login = async (credentials) => {
         // Implement login logic here (e.g., API call)
         // For example:
-        const response = await api.post('/users/authenticate', credentials);
+        const response = await api.post('/auth/login', credentials);
         const { jwtToken } = response.data;
         localStorage.setItem('token', jwtToken);
         setAuthToken(jwtToken);  // Set the token for future requests

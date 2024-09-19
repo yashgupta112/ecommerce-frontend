@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { makeRequest } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Container, Typography, Box, Alert } from '@mui/material';
+import BackgroundContainer from '../parts/BackgroundContainer';
 
 const Profile = () => {
   const [user, setUser] = useState({
@@ -57,9 +58,10 @@ const Profile = () => {
   }
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ mt: 4 }}>
-        <Typography variant="h4" gutterBottom>
+    <BackgroundContainer>
+    <Container maxWidth="sm" >
+      <Box sx={{ mt: 2, mb: 2 }}>
+        <Typography variant="h4" sx={{mb: 2}} gutterBottom textAlign={'center'}>
           Profile
         </Typography>
         <form onSubmit={handleUpdate}>
@@ -100,12 +102,13 @@ const Profile = () => {
             required
           />
           {error && <Alert severity="error">{error}</Alert>}
-          <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+          <Button type="submit" variant="contained" color="primary" fullWidth sx={{ m: 'auto', mt: 2, display: 'flex', width: 'fit-content' }}>
             Update Profile
           </Button>
         </form>
       </Box>
     </Container>
+    </BackgroundContainer>
   );
 };
 
