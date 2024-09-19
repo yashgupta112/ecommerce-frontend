@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import api, { makeRequest } from '../../api/api';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { Button, Container, Typography, Box } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext';
@@ -31,7 +29,7 @@ const Logout = () => {
           Go to Login
         </Button>
       </Box>
-  </Container>
+    </Container>
   );
 };
 

@@ -10,11 +10,6 @@ import {
   TableRow,
   Paper,
   TextField,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
   IconButton,
   Pagination,
   Select,
@@ -44,45 +39,41 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const ManageProducts = () => {
-    const [products, setProducts] = useState([]);
-    const navigate = useNavigate();
-    // const [orders, setOrders] = useState([]);
+  const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
-        try {
-            // const response = await axios.get('/api/products');
-            const response = await makeRequest('GET', '/seller/products');
-            setProducts(response.data);
-        } catch (error) {
-            // Check for 403 error
-            if (error.response && error.response.status === 403) {
-                // alert(error)
-                navigate('/login');  // Redirect to login page
-            } else {
-                console.error('Error fetching products', error);
-                // setErrorMessage('Failed to place order. Please try again.');
-            } 
-        } finally {
-            setLoading(false);
-          }
+      try {
+        const response = await makeRequest('GET', '/seller/products');
+        setProducts(response.data);
+      } catch (error) {
+        // Check for 403 error
+        if (error.response && error.response.status === 403) {
+          navigate('/login');  // Redirect to login page
+        } else {
+          console.error('Error fetching products', error);
+        }
+      } finally {
+        setLoading(false);
+      }
     };
     fetchProducts();
-}, []);
+  }, []);
 
-const handleDelete = async (id) => {
+  const handleDelete = async (id) => {
     try {
-        await  makeRequest('DELETE', `/seller/products/${id}`);
-        setProducts(products.filter(product => product.id !== id));
+      await makeRequest('DELETE', `/seller/products/${id}`);
+      setProducts(products.filter(product => product.id !== id));
     } catch (error) {
-        console.error('Error deleting product', error);
+      console.error('Error deleting product', error);
     }
-};
+  };
 
-const handleEdit = (id) => {
+  const handleEdit = (id) => {
     navigate(`/edit-product/${id}`);
-};
+  };
 
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -114,10 +105,10 @@ const handleEdit = (id) => {
 
   const filteredOrders = products
     .filter((product) =>
-      (product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchTerm.toLowerCase()) 
-     )
+    (product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchTerm.toLowerCase())
+    ) && (filterStatus === "All" || product.category.toString() === filterStatus)
     )
     .sort((a, b) => {
       if (sortBy === "name") return b.name - a.name;
@@ -181,8 +172,6 @@ const handleEdit = (id) => {
               <StyledTableCell>Category</StyledTableCell>
               <StyledTableCell>Price</StyledTableCell>
               <StyledTableCell>Stock Available</StyledTableCell>
-              {/* <StyledTableCell>Phone</StyledTableCell> */}
-              {/* <StyledTableCell>Status</StyledTableCell> */}
               <StyledTableCell>Actions</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -194,8 +183,6 @@ const handleEdit = (id) => {
                 <TableCell>{product.category}</TableCell>
                 <TableCell>${product.price}</TableCell>
                 <TableCell>{product.stock}</TableCell>
-                {/* <TableCell>{order.phone}</TableCell>
-                <TableCell>{order.status}</TableCell> */}
                 <TableCell>
                   <IconButton
                     aria-label="Edit Product"

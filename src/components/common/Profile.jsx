@@ -28,15 +28,15 @@ const Profile = () => {
         if (error.response && error.response.status === 403) {
           // alert(error)
           navigate('/login');  // Redirect to login page
-      } else {
+        } else {
           console.error('Error fetching products', error);
           // setErrorMessage('Failed to place order. Please try again.');
-      }
+        }
       }
     };
 
     fetchProfile();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);  // Only run on mount (empty dependency array)
 
   // Update user details
@@ -59,55 +59,55 @@ const Profile = () => {
 
   return (
     <BackgroundContainer>
-    <Container maxWidth="sm" >
-      <Box sx={{ mt: 2, mb: 2 }}>
-        <Typography variant="h4" sx={{mb: 2}} gutterBottom textAlign={'center'}>
-          Profile
-        </Typography>
-        <form onSubmit={handleUpdate}>
-          <TextField
-            label="Username"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={user.username}
-            readOnly
-          />
-          <TextField
-            label="Email"
-            type="email"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={user.email}
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
-            required
-          />
-          <TextField
-            label="Address"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={user.address}
-            onChange={(e) => setUser({ ...user, address: e.target.value })}
-            required
-          />
-          <TextField
-            label="Phone"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={user.phone}
-            onChange={(e) => setUser({ ...user, phone: e.target.value })}
-            required
-          />
-          {error && <Alert severity="error">{error}</Alert>}
-          <Button type="submit" variant="contained" color="primary" fullWidth sx={{ m: 'auto', mt: 2, display: 'flex', width: 'fit-content' }}>
-            Update Profile
-          </Button>
-        </form>
-      </Box>
-    </Container>
+      <Container maxWidth="sm" >
+        <Box sx={{ mt: 2, mb: 2 }}>
+          <Typography variant="h4" sx={{ mb: 2 }} gutterBottom textAlign={'center'}>
+            Profile
+          </Typography>
+          <form onSubmit={handleUpdate}>
+            <TextField
+              label="Username"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={user.username}
+              readOnly
+            />
+            <TextField
+              label="Email"
+              type="email"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              required
+            />
+            <TextField
+              label="Address"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={user.address}
+              onChange={(e) => setUser({ ...user, address: e.target.value })}
+              required
+            />
+            <TextField
+              label="Phone"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={user.phone}
+              onChange={(e) => setUser({ ...user, phone: e.target.value })}
+              required
+            />
+            {error && <Alert severity="error">{error}</Alert>}
+            <Button type="submit" variant="contained" color="primary" fullWidth sx={{ m: 'auto', mt: 2, display: 'flex', width: 'fit-content' }}>
+              Update Profile
+            </Button>
+          </form>
+        </Box>
+      </Container>
     </BackgroundContainer>
   );
 };

@@ -1,4 +1,3 @@
-// src/components/common/EditProduct.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { TextField, Button, Container, Typography } from '@mui/material';
@@ -22,7 +21,6 @@ const EditProduct = () => {
                     navigate('/login');  // Redirect to login page
                 } else {
                     console.error('Error fetching products', error);
-                    // setErrorMessage('Failed to place order. Please try again.');
                 }
             }
         };
@@ -99,15 +97,6 @@ const EditProduct = () => {
                     margin="normal"
                     required
                 />
-                {/* <TextField
-                    label="Image URL"
-                    name="imageUrl"
-                    value={product.imageUrl}
-                    onChange={handleChange}
-                    fullWidth
-                    margin="normal"
-                    required
-                /> */}
                 {error && <Typography color="error">{error}</Typography>}
                 <Button type="submit" variant="contained" color="primary">Update Product</Button>
             </form>

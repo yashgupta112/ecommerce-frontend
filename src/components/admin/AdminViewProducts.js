@@ -19,7 +19,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { styled } from '@mui/material/styles';
-import { FaSearch} from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { makeRequest } from "../../api/api";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -81,13 +81,13 @@ const AdminViewProducts = () => {
 
   const filteredProducts = products
     .filter((product) =>
-        (product.id.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.price.toString().includes(searchTerm) ||
-        product.stock.toString().includes(searchTerm)
-        ) 
+    (product.id.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.price.toString().includes(searchTerm) ||
+      product.stock.toString().includes(searchTerm)
+    )
     )
     .sort((a, b) => {
       if (sortBy === "id") return b.id - a.id;

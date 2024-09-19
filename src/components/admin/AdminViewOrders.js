@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Typography,
@@ -17,10 +17,10 @@ import {
   FormControl,
   InputLabel,
   CircularProgress,
-} from "@mui/material";
+} from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { FaSearch} from "react-icons/fa";
-import { makeRequest } from "../../api/api";
+import { FaSearch } from 'react-icons/fa';
+import { makeRequest } from '../../api/api';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
@@ -28,15 +28,15 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
+  '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
-  "&:hover": {
+  '&:hover': {
     backgroundColor: theme.palette.action.selected,
   },
 }));
 
-const OrderHistoryPage = () => {
+function OrderHistoryPage() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -55,10 +55,9 @@ const OrderHistoryPage = () => {
     fetchOrders();
   }, []);
 
-
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
-  const [sortBy, setSortBy] = useState("date");
+  const [sortBy, setSortBy] = useState('date');
 
   const itemsPerPage = 5;
 
@@ -66,7 +65,6 @@ const OrderHistoryPage = () => {
     setSearchTerm(event.target.value);
     setPage(1);
   };
-
 
   const handlePageChange = (event, value) => {
     setPage(value);
@@ -76,39 +74,34 @@ const OrderHistoryPage = () => {
     setSortBy(event.target.value);
   };
 
-
-
   const filteredOrders = orders
-    .filter((order) =>
-        (order.id.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
-        order.shippingAddress.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
-        order.phone.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
-        order.totalAmount.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
-        order.customer.username.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
-        order.orderDate.includes(searchTerm) ||
-        order.status.toLowerCase().includes(searchTerm.toLowerCase())) 
-    )
+    .filter((order) => (order.id.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        || order.shippingAddress.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        || order.phone.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        || order.totalAmount.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        || order.customer.username.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        || order.orderDate.includes(searchTerm)
+        || order.status.toLowerCase().includes(searchTerm.toLowerCase())))
     .sort((a, b) => {
-      if (sortBy === "date") return new Date(b.orderDate) - new Date(a.orderDate);
-      if (sortBy === "total") return b.totalAmount - a.totalAmount;
+      if (sortBy === 'date') return new Date(b.orderDate) - new Date(a.orderDate);
+      if (sortBy === 'total') return b.totalAmount - a.totalAmount;
       return 0;
     });
 
   const paginatedOrders = filteredOrders.slice(
     (page - 1) * itemsPerPage,
-    page * itemsPerPage
+    page * itemsPerPage,
   );
 
   if (loading) return <CircularProgress />;
   if (error) return <Typography color="error">{error}</Typography>;
-
 
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant="h4" gutterBottom>
         Order History
       </Typography>
-      <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
         <TextField
           label="Search orders"
           variant="outlined"
@@ -119,7 +112,7 @@ const OrderHistoryPage = () => {
             startAdornment: <FaSearch />,
           }}
         />
-        <Box sx={{ display: "flex", gap: 2 }}>
+        <Box sx={{ display: 'flex', gap: 2 }}>
           <FormControl size="small">
             <InputLabel>Sort by</InputLabel>
             <Select value={sortBy} onChange={handleSortChange} label="Sort by">
@@ -150,14 +143,17 @@ const OrderHistoryPage = () => {
                 <TableCell>{order.customer.username}</TableCell>
                 <TableCell>{order.shippingAddress}</TableCell>
                 <TableCell>{order.phone}</TableCell>
-                <TableCell>${order.totalAmount}</TableCell>
+                <TableCell>
+                  $
+                  {order.totalAmount}
+                </TableCell>
                 <TableCell>{order.status}</TableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
         <Pagination
           count={Math.ceil(filteredOrders.length / itemsPerPage)}
           page={page}
@@ -167,6 +163,6 @@ const OrderHistoryPage = () => {
       </Box>
     </Box>
   );
-};
+}
 
 export default OrderHistoryPage;

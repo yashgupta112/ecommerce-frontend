@@ -44,7 +44,7 @@ const AdminViewUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await makeRequest('GET', '/admin/users');   
+        const response = await makeRequest('GET', '/admin/users');
         setUsers(response.data);
       } catch (err) {
         setError('Failed to fetch users');
@@ -127,7 +127,7 @@ const AdminViewUsers = () => {
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant="h4" gutterBottom>
-        User Management 
+        User Management
       </Typography>
       <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
         <TextField
@@ -180,7 +180,7 @@ const AdminViewUsers = () => {
                 <TableCell>{user.active ? 'Active' : 'Suspended'}</TableCell>
                 <TableCell>
                   {/* Add buttons for suspending or deleting user */}
-                  {user.active && <Button variant="contained" color="warning" sx={{mr: 2}} onClick={() => handleSuspend(user.id)}>Suspend</Button>}
+                  {user.active && <Button variant="contained" color="warning" sx={{ mr: 2 }} onClick={() => handleSuspend(user.id)}>Suspend</Button>}
                   <Button variant="contained" color="error" onClick={() => handleDelete(user.id)}>Delete</Button>
                 </TableCell>
               </StyledTableRow>

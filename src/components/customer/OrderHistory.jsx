@@ -47,7 +47,7 @@ const OrderHistoryPage = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await makeRequest('GET', '/customer/orders'); 
+        const response = await makeRequest('GET', '/customer/orders');
         const data = response.data;
         setOrders(data);
         console.log('orders after: ', orders, typeof data);
@@ -58,7 +58,7 @@ const OrderHistoryPage = () => {
       }
     };
     fetchOrders();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
@@ -220,15 +220,15 @@ const OrderHistoryPage = () => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                  {selectedOrder.orderItems.map((order) => (
-                    <TableRow>
-                      <TableCell>{order.product.name}</TableCell>
-                      <TableCell>{order.product.category}</TableCell>
-                      <TableCell>${order.product.price}</TableCell>
-                      <TableCell>{order.quantity}</TableCell>
-                      <TableCell>${order.product.price * order.quantity}</TableCell>
-                    </TableRow>
-                  ))}
+                    {selectedOrder.orderItems.map((order) => (
+                      <TableRow>
+                        <TableCell>{order.product.name}</TableCell>
+                        <TableCell>{order.product.category}</TableCell>
+                        <TableCell>${order.product.price}</TableCell>
+                        <TableCell>{order.quantity}</TableCell>
+                        <TableCell>${order.product.price * order.quantity}</TableCell>
+                      </TableRow>
+                    ))}
                   </TableBody>
                 </Table>
               </TableContainer>

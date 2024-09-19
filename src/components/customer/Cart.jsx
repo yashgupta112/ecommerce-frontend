@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import api, { makeRequest } from '../../api/api';
 import { Button, Typography, Container, Grid, Card, CardContent, CardActions } from '@mui/material';
-import {Link} from 'react-router-dom';
-// import { useCart } from '../../contexts/CartContext';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
-  // const { getCart, removeFromCart } = useCart();
-  // const cartItems = getCart();
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
@@ -54,18 +51,18 @@ const Cart = () => {
           </Grid>
         ))}
       </Grid>
-  <Typography color="error" sx={{mt: 3}}>{cartItems.length ? '': 'No prducts in the cart.' }</Typography>
+      <Typography color="error" sx={{ mt: 3 }}>{cartItems.length ? '' : 'No prducts in the cart.'}</Typography>
 
       <Button
-          variant="contained"
-          color="primary"
-          component={Link}
-          to="/place-order"
-          disabled={!cartItems.length}
-          sx={{mt: 3}}
-        >
-          Place Order
-        </Button>
+        variant="contained"
+        color="primary"
+        component={Link}
+        to="/place-order"
+        disabled={!cartItems.length}
+        sx={{ mt: 3 }}
+      >
+        Place Order
+      </Button>
     </Container>
   );
 };

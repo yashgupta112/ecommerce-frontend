@@ -28,6 +28,7 @@ const Header = () => {
               <Button color="inherit" component={Link} to="/profile">
                 Profile
               </Button>
+              {/* Navigation for Customer */}
               {user.role === ROLE.CUSTOMER && (
                 <>
                   <Button color="inherit" component={Link} to="/products">
@@ -41,6 +42,7 @@ const Header = () => {
                   </Button>
                 </>
               )}
+              {/* Navigation for Seller */}
               {user.role === ROLE.SELLER && (
                 <>
                   <Button color="inherit" component={Link} to="/manage-products">
@@ -52,6 +54,7 @@ const Header = () => {
                 </>
               )}
 
+              {/* Navigation for Admin */}
               {user.role === ROLE.ADMIN && (
                 <>
                   <Button color="inherit" component={Link} to="/admin/users">

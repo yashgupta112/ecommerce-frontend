@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
+import { ROLE } from './constants';
+
 import Login from './components/common/Login';
 import Register from './components/common/Register';
 import Profile from './components/common/Profile';
@@ -20,7 +22,8 @@ import ManageProducts from './components/seller/ManageProducts';
 import EditProduct from './components/seller/EditProduct';
 import Home from './components/common/Home';
 import RoleProtectedRoute from './components/parts/RoleProtectedRoute';
-import { ROLE } from './constants';
+
+// Admin components
 import AdminViewUsers from './components/admin/AdminViewUsers';
 import AdminViewOrders from './components/admin/AdminViewOrders';
 import AdminViewProducts from './components/admin/AdminViewProducts';
@@ -40,7 +43,6 @@ const App = () => {
       <CartProvider>
         <Router>
         <Header /> 
-          {/* <Container sx={{ mt: 4 }}> */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
@@ -64,7 +66,6 @@ const App = () => {
               <Route path="/admin/products/" element={<RoleProtectedRoute allowedRoles={[ROLE.ADMIN]}><AdminViewProducts /></RoleProtectedRoute> } />
             
             </Routes>
-          {/* </Container> */}
         </Router>
       </CartProvider>
     </UserProvider>

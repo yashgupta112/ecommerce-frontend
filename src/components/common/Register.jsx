@@ -26,83 +26,83 @@ const Register = () => {
 
   return (
     <BackgroundContainer>
-    <Container maxWidth="sm">
-      <Grid container spacing={2} direction="column" alignItems="center">
-        <Grid item>
-          <Typography variant="h4">Register</Typography>
-        </Grid>
-        <Grid item>
-          <form onSubmit={handleRegister}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  label="Username"
-                  variant="outlined"
-                  fullWidth
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Password"
-                  type="password"
-                  variant="outlined"
-                  fullWidth
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Email"
-                  type="email"
-                  variant="outlined"
-                  fullWidth
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Role"
-                  select
-                  fullWidth
-                  variant="outlined"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                  required
-                >
-                  <MenuItem value="CUSTOMER">Customer</MenuItem>
-                  <MenuItem value="SELLER">Seller</MenuItem>
-                </TextField>
-              </Grid>
-              {error && (
+      <Container maxWidth="sm">
+        <Grid container spacing={2} direction="column" alignItems="center">
+          <Grid item>
+            <Typography variant="h4">Register</Typography>
+          </Grid>
+          <Grid item>
+            <form onSubmit={handleRegister}>
+              <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <Alert severity="error">{error}</Alert>
+                  <TextField
+                    label="Username"
+                    variant="outlined"
+                    fullWidth
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                  />
                 </Grid>
-              )}
-              <Grid item xs={12}>
-                <Button type="submit" variant="contained" fullWidth>
-                  Register
-                </Button>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Password"
+                    type="password"
+                    variant="outlined"
+                    fullWidth
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Email"
+                    type="email"
+                    variant="outlined"
+                    fullWidth
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Role"
+                    select
+                    fullWidth
+                    variant="outlined"
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                    required
+                  >
+                    <MenuItem value="CUSTOMER">Customer</MenuItem>
+                    <MenuItem value="SELLER">Seller</MenuItem>
+                  </TextField>
+                </Grid>
+                {error && (
+                  <Grid item xs={12}>
+                    <Alert severity="error">{error}</Alert>
+                  </Grid>
+                )}
+                <Grid item xs={12}>
+                  <Button type="submit" variant="contained" fullWidth>
+                    Register
+                  </Button>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
+            </form>
+          </Grid>
+          <Typography variant="subtitle1" sx={{ textAlign: 'center', mt: 3 }}>
+            Already have an account?
+          </Typography>
+          <Box textAlign='center'>
+            <Button type="button" variant="contained" color="error" component={Link} to='/login'>
+              Login now
+            </Button>
+          </Box>
         </Grid>
-        <Typography variant="subtitle1" sx={{textAlign: 'center', mt: 3}}>
-          Already have an account?
-        </Typography>
-        <Box textAlign='center'>
-        <Button type="button" variant="contained" color="error" component={Link}  to='/login'>
-            Login now
-          </Button>
-        </Box>
-      </Grid>
-    </Container>
+      </Container>
     </BackgroundContainer>
 
   );

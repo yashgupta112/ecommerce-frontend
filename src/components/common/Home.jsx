@@ -13,7 +13,7 @@ const Home = () => {
         <Typography variant="h3" gutterBottom>
           Welcome to the E-Commerce Platform
         </Typography>
-        
+
         {/* If user is logged in */}
         {user ? (
           <>

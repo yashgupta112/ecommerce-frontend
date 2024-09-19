@@ -11,7 +11,7 @@ const NotAuthorized = () => {
       <Typography variant="body1" gutterBottom>
         You are not authorized to view this page.
       </Typography>
-      
+
       <Box sx={{ mt: 3 }}>
         <Button
           variant="contained"
